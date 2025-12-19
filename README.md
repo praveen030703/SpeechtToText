@@ -1,37 +1,63 @@
-# Tauri + React
+# Speech to Text Desktop App
 
-This template should help get you started developing with Tauri and React in Vite.
+A privacy-focused desktop application for real-time speech-to-text transcription. Built with **Tauri** (Rust backend) and **React** (frontend), it runs entirely on your machine.
 
-## Recommended IDE Setup
+**Note**: Currently uses the Deepgram cloud API for transcription (requires an API key and internet connection). Future improvements may include fully offline models like whisper-rs or Whisper.cpp for complete local processing.
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Features
 
-# SpeechToText Tauri App
-
-SpeechToText is a desktop application built with Tauri that enables real-time speech-to-text transcription directly on your machine. It leverages web technologies for the frontend and Rust for secure, efficient backend processing, ensuring privacy by keeping all audio data local.
+- Real-time speech-to-text using modern web technologies
+- Lightweight desktop app (thanks to Tauri)
+- Cross-platform support (Windows, macOS, Linux – with some limitations on Linux for Web Speech API)
+- Audio processed securely with Tauri's Rust backend
 
 ## Tech Stack
 
-- **Frontend**: Likely React/Vite or similar with Web Speech API for recognition.[3]
-- **Backend**: Tauri (Rust) for system audio access and app bundling.[6]
-- **Dependencies**: Standard Tauri setup with potential Whisper.cpp integration for advanced offline STT.[5]
+- **Frontend**: React + Vite + Web Speech API
+- **Backend/Build**: Tauri (Rust)
+- **Speech Recognition**: Deepgram API (cloud) – planned migration to offline alternatives
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- **Node.js** (v18 or higher) – Download from https://nodejs.org
+- **Rust** – Install via https://rustup.rs
+- **Tauri CLI** – Will be installed globally in the steps below
+- System dependencies (Tauri will prompt you if missing):
+  - Windows: WebView2 (usually pre-installed)
+  - macOS: Xcode Command Line Tools
+  - Linux: webkit2gtk, gtk3, etc. (see Tauri's docs)
 
 ## Quick Start
 
-1. Clone the repo: `git clone https://github.com/praveen030703/SpeechToText.git`
-2. Navigate to tauri-app: `cd tauri-app`
-3. Install dependencies: `npm install`
-4. Get Deepgram API key from : `https://deepgram.com`
-5. Create .env file : `VITE_DEEPGRAM_API_KEY : your API key`
-6. Run dev server: `npm run tauri dev || npm run dev`
-7. Build for production: `npm run tauri build`
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/praveen030703/SpeechtToText.git
+   ```
+2. **Enter the app directory**
+   cd tauri app
 
-Ensure Tauri CLI is installed globally: `npm install -g @tauri-apps/cli`. Install system dependencies as prompted (e.g., WebView2 on Windows).
+3. **Install dependancies**
+   npm install
 
-## Building and Distribution
+4. **Install tauri CLI globally**
+   npm install -g @tauri-apps/cli
 
-Use `tauri build` for platform-specific bundles. For Linux, note potential Web Speech API limitations—consider Rust-based alternatives like whisper-rs.
+5. **Get a Deepgram API Key**
+   Sign up at https://deepgram.com and create a free API key.
+   This is required for speech transcription.
 
-## Contributing
+6. **Create .env file to store API Key**
+   DDEEPGRAM_API_KEY = "Your API Key here"
 
-Fork the repo, create a branch, and submit a PR. Focus on improving accuracy, adding language support, or UI enhancements.
+7. **Run the Applicatio in development mode**
+   npm run tauri dev
+
+**Troubleshooting**
+
+Tauri command not found: Ensure @tauri-apps/cli is installed globally.
+Missing system libraries: Follow Tauri's error messages to install required packages.
+No transcription: Double-check your Deepgram API key in .env and internet connection.
+Linux issues: Web Speech API support is limited; consider switching to an offline Rust-based model in the future.
+For more help, see Tauri's documentation: https://tauri.app
