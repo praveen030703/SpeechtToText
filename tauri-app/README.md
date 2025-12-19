@@ -36,28 +36,38 @@ Before starting, ensure you have:
    git clone https://github.com/praveen030703/SpeechtToText.git
    ```
 2. **Enter the app directory**
+
+   ```
    cd tauri app
+   ```
 
 3. **Install dependancies**
+
+   ```
    npm install
+   ```
 
 4. **Install tauri CLI globally**
+
+   ```
    npm install -g @tauri-apps/cli
+   ```
 
 5. **Get a Deepgram API Key**
+
+   ```
    Sign up at https://deepgram.com and create a free API key.
    This is required for speech transcription.
+   ```
 
 6. **Create .env file to store API Key**
-   DDEEPGRAM_API_KEY = "Your API Key here"
+
+   ```
+   DEEPGRAM_API_KEY = "Your API Key here"
+   ```
 
 7. **Run the Applicatio in development mode**
+
+   ```
    npm run tauri dev
-
-**Troubleshooting**
-
-Tauri command not found: Ensure @tauri-apps/cli is installed globally.
-Missing system libraries: Follow Tauri's error messages to install required packages.
-No transcription: Double-check your Deepgram API key in .env and internet connection.
-Linux issues: Web Speech API support is limited; consider switching to an offline Rust-based model in the future.
-For more help, see Tauri's documentation: https://tauri.app
+   ```
